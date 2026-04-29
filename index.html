@@ -79,12 +79,6 @@
             color: var(--accent-red);
         }
 
-        .nav-right {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
         .phone-cta {
             background: var(--accent-red);
             color: white;
@@ -97,25 +91,6 @@
 
         .phone-cta:hover {
             background: #b71c1c;
-        }
-
-        .cart-icon {
-            background: var(--accent-green);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .cart-icon:hover {
-            background: #1e5a1f;
         }
 
         /* ─── HERO SECTION ─────────────────────────────────────────── */
@@ -280,7 +255,7 @@
             line-height: 1.6;
         }
 
-        /* ─── MENU SECTION (FULL MENU WITH CATEGORIES) ─────────────────────────────────────────── */
+        /* ─── MENU SECTION (FEATURED FAVORITES) ─────────────────────────────────────────── */
         .menu-section {
             background: var(--secondary-dark);
             padding: 5rem 2rem;
@@ -320,7 +295,7 @@
             color: white;
         }
 
-        /* Menu Grid - Uses same structure as specials */
+        /* Menu Grid */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -337,6 +312,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .menu-item-card::before {
@@ -354,12 +330,33 @@
 
         .menu-item-card:hover {
             border-color: var(--accent-green);
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
         }
 
         .menu-item-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .menu-item-card::after {
+            content: 'Click to Order';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(211, 47, 47, 0.9);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .menu-item-card:hover::after {
+            opacity: 1;
         }
 
         .menu-item-card h3 {
@@ -375,23 +372,6 @@
             line-height: 1.5;
             margin-bottom: 1rem;
             flex-grow: 1;
-        }
-
-        .add-to-cart-btn {
-            background: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-            align-self: flex-start;
-        }
-
-        .add-to-cart-btn:hover {
-            background: #b71c1c;
         }
 
         .hidden {
@@ -465,8 +445,8 @@
             color: white;
         }
 
-        /* ─── CART MODAL ─────────────────────────────────────────── */
-        .cart-modal {
+        /* ─── ORDER TYPE MODAL ─────────────────────────────────────────── */
+        .order-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -479,147 +459,75 @@
             justify-content: center;
         }
 
-        .cart-modal.active {
+        .order-modal.active {
             display: flex;
         }
 
-        .cart-content {
+        .order-modal-content {
             background: var(--secondary-dark);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 2rem;
-            max-width: 500px;
+            padding: 3rem;
+            max-width: 400px;
             width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
+            text-align: center;
+            animation: slideUp 0.3s ease;
         }
 
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .cart-header h2 {
+        .order-modal-content h2 {
             font-size: 1.8rem;
-            color: var(--accent-red);
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-cart:hover {
-            color: var(--accent-red);
-        }
-
-        .cart-items {
-            margin-bottom: 2rem;
-        }
-
-        .cart-item {
-            background: var(--primary-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1rem;
             margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: var(--accent-red);
         }
 
-        .cart-item-info h4 {
-            color: var(--accent-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .cart-item-info p {
+        .order-modal-content p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
 
-        .cart-item-remove {
+        .order-modal-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .order-btn {
+            flex: 1;
             background: var(--accent-red);
             color: white;
-            border: none;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: background 0.3s ease;
-        }
-
-        .cart-item-remove:hover {
-            background: #b71c1c;
-        }
-
-        .cart-empty {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 2rem;
-        }
-
-        .cart-total {
-            background: var(--primary-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: right;
-        }
-
-        .cart-total p {
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .cart-total-amount {
-            font-size: 1.8rem;
-            color: var(--accent-green);
-            font-weight: 700;
-        }
-
-        .cart-checkout {
-            background: var(--accent-green);
-            color: white;
-            border: none;
+            border: 2px solid var(--accent-red);
             padding: 1rem;
             border-radius: 4px;
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            width: 100%;
-            transition: background 0.3s ease;
-            margin-bottom: 0.5rem;
-        }
-
-        .cart-checkout:hover {
-            background: #1e5a1f;
-        }
-
-        .cart-continue {
-            background: transparent;
-            color: var(--accent-red);
-            border: 2px solid var(--accent-red);
-            padding: 0.8rem;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
             transition: all 0.3s ease;
         }
 
-        .cart-continue:hover {
-            background: var(--accent-red);
+        .order-btn:hover {
+            background: transparent;
+            color: var(--accent-red);
+        }
+
+        .order-btn.secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .order-btn.secondary:hover {
+            background: var(--accent-green);
             color: white;
         }
 
@@ -678,11 +586,6 @@
                 flex-wrap: wrap;
             }
 
-            .nav-right {
-                width: 100%;
-                justify-content: flex-end;
-            }
-
             .about-section {
                 grid-template-columns: 1fr;
             }
@@ -710,6 +613,14 @@
             .category-btn {
                 padding: 0.6rem 1rem;
                 font-size: 0.85rem;
+            }
+
+            .order-modal-content {
+                padding: 2rem;
+            }
+
+            .order-modal-buttons {
+                flex-direction: column;
             }
         }
 
@@ -752,10 +663,7 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
-            <div class="nav-right">
-                <a href="tel:+1234567890" class="phone-cta">📞 Call Now</a>
-                <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
-            </div>
+            <a href="tel:+1234567890" class="phone-cta">📞 Call Now</a>
         </nav>
     </header>
 
@@ -912,26 +820,15 @@
         </div>
     </footer>
 
-    <!-- CART MODAL -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2>Your Order</h2>
-                <button class="close-cart" onclick="toggleCart()">✕</button>
+    <!-- ORDER TYPE MODAL -->
+    <div class="order-modal" id="orderModal">
+        <div class="order-modal-content">
+            <h2>How would you like your order?</h2>
+            <p>Choose your preferred delivery method</p>
+            <div class="order-modal-buttons">
+                <button class="order-btn" onclick="selectOrderType('pickup')">🚗 Pickup</button>
+                <button class="order-btn secondary" onclick="selectOrderType('delivery')">🚚 Delivery</button>
             </div>
-
-            <div class="cart-items" id="cartItems">
-                <div class="cart-empty">Your cart is empty</div>
-            </div>
-
-            <div class="cart-total hidden" id="cartTotal">
-                <p>Subtotal: <span id="subtotal">$0.00</span></p>
-                <p>Tax (8%): <span id="tax">$0.00</span></p>
-                <p class="cart-total-amount">Total: <span id="total">$0.00</span></p>
-            </div>
-
-            <button class="cart-checkout hidden" id="checkoutBtn" onclick="checkout()">Proceed to Checkout</button>
-            <button class="cart-continue" onclick="toggleCart()">Continue Shopping</button>
         </div>
     </div>
 
@@ -1073,7 +970,7 @@
         };
 
         let currentCategory = 'appetizers';
-        let cart = [];
+        let selectedItem = null;
 
         function filterMenu(category) {
             currentCategory = category;
@@ -1101,73 +998,25 @@
                 itemDiv.innerHTML = `
                     <h3>${item.name}</h3>
                     <p>Delicious ${category} item prepared fresh daily with premium ingredients.</p>
-                    <button class="add-to-cart-btn" onclick="addToCart('${item.name}')">Add to Cart</button>
                 `;
 
+                itemDiv.addEventListener('click', () => openOrderModal(item.name));
                 menuGrid.appendChild(itemDiv);
             });
         }
 
-        function addToCart(itemName) {
-            cart.push({ name: itemName, price: 12.99 });
-            updateCartUI();
-            alert(`${itemName} added to cart!`);
+        function openOrderModal(itemName) {
+            selectedItem = itemName;
+            document.getElementById('orderModal').classList.add('active');
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
+        function selectOrderType(orderType) {
+            // Save to localStorage
+            localStorage.setItem('orderType', orderType);
+            localStorage.setItem('selectedItem', selectedItem);
 
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            const checkoutBtn = document.getElementById('checkoutBtn');
-
-            cartCount.textContent = cart.length;
-
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
-                cartTotal.classList.add('hidden');
-                checkoutBtn.classList.add('hidden');
-                return;
-            }
-
-            cartTotal.classList.remove('hidden');
-            checkoutBtn.classList.remove('hidden');
-
-            cartItems.innerHTML = cart.map((item, index) => `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <p>$${item.price.toFixed(2)}</p>
-                    </div>
-                    <button class="cart-item-remove" onclick="removeFromCart(${index})">Remove</button>
-                </div>
-            `).join('');
-
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const tax = subtotal * 0.08;
-            const total = subtotal + tax;
-
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-        }
-
-        function toggleCart() {
-            const cartModal = document.getElementById('cartModal');
-            cartModal.classList.toggle('active');
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            alert('Redirecting to Square checkout...\n\nCart Total: $' + (cart.reduce((sum, item) => sum + item.price, 0) * 1.08).toFixed(2));
-            // This will connect to Square API later
+            // Redirect to menu.html
+            window.location.href = 'menu.html';
         }
 
         // Initial render
