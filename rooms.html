@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooms | BA' RUNI Hotel & Grille</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0f0f0f;
+    color:white;
+}
+
+/* NAV */
+header {
+    background:#1a1a1a;
+    padding:1rem 2rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a {
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+.logo {
+    font-weight:bold;
+    font-size:1.4rem;
+    color:#d32f2f;
+}
+
+/* HERO */
+.hero {
+    height:50vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+                url('assets/baruni-hero-neon.jpg') center/cover;
+}
+
+.hero h1 {
+    font-size:3rem;
+}
+
+/* ROOMS */
+.rooms {
+    padding:3rem 2rem;
+    max-width:1100px;
+    margin:auto;
+}
+
+.room-card {
+    background:#1a1a1a;
+    margin-bottom:2rem;
+    padding:2rem;
+    border-radius:8px;
+}
+
+.room-card h2 {
+    color:#d32f2f;
+}
+
+/* BUTTON */
+button {
+    background:#d32f2f;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover {
+    background:#b71c1c;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">BA' RUNI</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="index.html#specials">Specials</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Stay With Us</h1>
+</section>
+
+<section class="rooms">
+
+    <div class="room-card">
+        <h2>Standard Room</h2>
+        <p>Comfortable stay with queen bed, WiFi, and TV.</p>
+        <p><strong>$89 / night</strong></p>
+        <button onclick="bookRoom('Standard Room')">Book Now</button>
+    </div>
+
+    <div class="room-card">
+        <h2>Deluxe Room</h2>
+        <p>Spacious room with king bed and premium amenities.</p>
+        <p><strong>$129 / night</strong></p>
+        <button onclick="bookRoom('Deluxe Room')">Book Now</button>
+    </div>
+
+    <div class="room-card">
+        <h2>Suite</h2>
+        <p>Luxury suite with lounge area and full experience.</p>
+        <p><strong>$179 / night</strong></p>
+        <button onclick="bookRoom('Suite')">Book Now</button>
+    </div>
+
+</section>
+
+<script>
+function bookRoom(roomName) {
+    alert("Booking: " + roomName + "\\nCall now or integrate payment next.");
+}
+</script>
+
+</body>
+</html>
