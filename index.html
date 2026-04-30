@@ -339,21 +339,17 @@
         }
 
         .menu-item-card::after {
-            content: 'Click to Order';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(211, 47, 47, 0.9);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
+    content: 'Click to Order';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #aaa;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
 
         .menu-item-card:hover::after {
             opacity: 1;
