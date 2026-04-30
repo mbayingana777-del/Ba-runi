@@ -338,25 +338,37 @@
             transform: scaleX(1);
         }
 
-        .menu-item-card::after {
-    content: 'Click to Order';
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translate(-50%, 8px);
-    font-size: 0.8rem;
-    color: #ffa94d;
-    opacity: 0;
-    letter-spacing: 1px;
-    text-shadow: 0 0 6px rgba(255, 169, 77, 0.4);
-    transition: all 0.25s ease;
-    pointer-events: none;
-}
+        /* ✨ FOOD IMAGE STYLING ✨ */
+        .menu-item-img {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 75px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.85;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
 
-.menu-item-card:hover::after {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
+        .menu-item-card:hover .menu-item-img {
+            transform: scale(1.1) rotate(-3deg);
+            opacity: 1;
+        }
+
+        /* Image Size Variations */
+        .menu-item-img.img-small {
+            width: 60px;
+        }
+
+        .menu-item-img.img-medium {
+            width: 75px;
+        }
+
+        .menu-item-img.img-large {
+            width: 90px;
+        }
 
         .menu-item-card h3 {
             font-size: 1.3rem;
@@ -389,266 +401,78 @@
         }
 
         .about-content h2 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
             font-weight: 800;
         }
 
         .about-content p {
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            opacity: 0.8;
-        }
-
-        /* ─── CTA SECTION ─────────────────────────────────────────── */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-green));
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-            font-weight: 800;
-        }
-
-        .cta-section p {
-            color: rgba(255,255,255,.9);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-section .cta-button {
-            background: white;
+        .about-content .accent-text {
             color: var(--accent-red);
-            border-color: white;
-        }
-
-        .cta-section .cta-button:hover {
-            background: transparent;
-            color: white;
-        }
-
-        /* ─── ORDER TYPE MODAL ─────────────────────────────────────────── */
-        .order-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .order-modal.active {
-            display: flex;
-        }
-
-        .order-modal-content {
-            background: var(--secondary-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 3rem;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .order-modal-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--accent-red);
-        }
-
-        .order-modal-content p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .order-modal-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .order-btn {
-            flex: 1;
-            background: var(--accent-red);
-            color: white;
-            border: 2px solid var(--accent-red);
-            padding: 1rem;
-            border-radius: 4px;
             font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .order-btn:hover {
-            background: transparent;
-            color: var(--accent-red);
-        }
-
-        .order-btn.secondary {
-            background: transparent;
-            color: var(--accent-green);
-            border-color: var(--accent-green);
-        }
-
-        .order-btn.secondary:hover {
-            background: var(--accent-green);
-            color: white;
-        }
-
-        /* ─── FOOTER ─────────────────────────────────────────────── */
+        /* ─── FOOTER ─────────────────────────────────────────── */
         footer {
             background: var(--secondary-dark);
             border-top: 1px solid var(--border-color);
             padding: 3rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            color: var(--accent-red);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-section p, .footer-section a {
+            text-align: center;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-red);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-section a:hover {
-            color: var(--accent-red);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        footer a:hover {
+            color: var(--accent-green);
         }
 
         /* ─── RESPONSIVE ─────────────────────────────────────────── */
         @media (max-width: 768px) {
-            nav ul {
+            nav {
+                flex-direction: column;
                 gap: 1rem;
             }
 
-            nav {
-                padding: 1rem;
-                flex-wrap: wrap;
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
             }
 
             .about-section {
                 grid-template-columns: 1fr;
             }
 
-            .about-image {
-                height: 250px;
-            }
-
-            .hero {
-                min-height: 50vh;
-            }
-
-            .specials-grid {
-                grid-template-columns: 1fr;
-            }
-
             .menu-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
 
-            .category-nav {
-                gap: 0.5rem;
+            .menu-item-img {
+                width: 55px;
             }
 
-            .category-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
+            .menu-item-img.img-small {
+                width: 45px;
             }
 
-            .order-modal-content {
-                padding: 2rem;
+            .menu-item-img.img-large {
+                width: 70px;
             }
-
-            .order-modal-buttons {
-                flex-direction: column;
-            }
-        }
-
-        /* ─── ANIMATIONS ─────────────────────────────────────────── */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .special-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .special-card:nth-child(1) { animation-delay: 0.1s; }
-        .special-card:nth-child(2) { animation-delay: 0.2s; }
-        .special-card:nth-child(3) { animation-delay: 0.3s; }
-        .special-card:nth-child(4) { animation-delay: 0.4s; }
-        .special-card:nth-child(5) { animation-delay: 0.5s; }
-        .special-card:nth-child(6) { animation-delay: 0.6s; }
-        .special-card:nth-child(7) { animation-delay: 0.7s; }
-
-        .menu-item-card {
-            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
@@ -662,94 +486,87 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
-            <a href="tel:+1234567890" class="phone-cta">📞 Call Now</a>
+            <a href="tel:+1234567890" class="phone-cta">📞 Call to Order</a>
         </nav>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
-            <h1>ARTISAN <span class="accent-text">KITCHEN</span></h1>
-            <p>Great food. Good times. Every night.</p>
-            <a href="#specials" class="cta-button">View Today's Specials</a>
+            <h1>Welcome to <span class="accent-text">Artisan Kitchen</span></h1>
+            <p>Authentic cuisine, crafted with passion</p>
+            <a href="#menu" class="cta-button">Explore Menu</a>
         </div>
     </section>
 
-    <!-- WEEKLY SPECIALS -->
+    <!-- WEEKLY SPECIALS SECTION -->
     <section class="specials-section" id="specials">
         <div class="section-header">
-            <h2>Weekly <span class="accent-text">Specials</span></h2>
-            <p>Something amazing every single day</p>
+            <h2>Weekly <span style="color: var(--accent-red);">Specials</span></h2>
+            <p>Fresh, limited-time offers every day</p>
         </div>
 
         <div class="specials-grid">
-            <!-- SUNDAY -->
             <div class="special-card">
                 <div class="day-label">Sunday</div>
-                <h3>🔥 Wing Day</h3>
-                <div class="offer">Crispy, Saucy, All Day</div>
-                <p>Our signature wings tossed in your choice of sauce. Perfectly crispy on the outside, tender inside. Served with fresh-cut fries and house dressing.</p>
+                <h3>Wing Day</h3>
+                <div class="offer">50% OFF</div>
+                <p>Enjoy our signature wings with your choice of 12 premium flavors. Perfect for game day!</p>
             </div>
 
-            <!-- MONDAY -->
             <div class="special-card">
                 <div class="day-label">Monday</div>
                 <h3>Flatbread Night</h3>
-                <div class="offer">Build It Your Way</div>
-                <p>Start with our wood-fired flatbread and customize with your favorite toppings. Thin, crispy, and loaded with flavor. Pairs perfectly with our seasonal salads.</p>
+                <div class="offer">$2 OFF</div>
+                <p>Crispy, wood-fired flatbreads with gourmet toppings. Start your week delicious.</p>
             </div>
 
-            <!-- TUESDAY -->
             <div class="special-card">
                 <div class="day-label">Tuesday</div>
-                <h3>$2 Off Burgers</h3>
-                <div class="offer">No Excuses</div>
-                <p>Premium beef patties, fresh toppings, and artisan buns. Choose from classics or create your own. Every burger grilled to perfection and served with hand-cut fries.</p>
+                <h3>Burger Bliss</h3>
+                <div class="offer">$2 OFF</div>
+                <p>Handcrafted burgers with premium beef and fresh toppings. Juicy perfection.</p>
             </div>
 
-            <!-- WEDNESDAY -->
             <div class="special-card">
                 <div class="day-label">Wednesday</div>
                 <h3>Lasagna Day</h3>
-                <div class="offer">Homemade & Loaded</div>
-                <p>Layers of rich meat sauce, creamy ricotta, and melted mozzarella. Our family recipe made fresh daily. Served with garlic bread and a side salad.</p>
+                <div class="offer">$3 OFF</div>
+                <p>Layers of homemade pasta, rich sauce, and melted cheese. Comfort food at its finest.</p>
             </div>
 
-            <!-- THURSDAY -->
             <div class="special-card">
                 <div class="day-label">Thursday</div>
                 <h3>Greek Night</h3>
-                <div class="offer">Flavor Packed</div>
-                <p>Mediterranean favorites featuring feta, olives, and fresh herbs. Grilled lamb, crispy saganaki, and vibrant salads. A taste of the islands right here.</p>
+                <div class="offer">$2.50 OFF</div>
+                <p>Mediterranean flavors with feta, olives, and fresh vegetables. A taste of the islands.</p>
             </div>
 
-            <!-- FRIDAY -->
             <div class="special-card">
                 <div class="day-label">Friday</div>
                 <h3>Fish & Seafood</h3>
-                <div class="offer">Fresh Catch Specials</div>
-                <p>Daily fresh-caught selections prepared with seasonal vegetables. Pan-seared, grilled, or lightly fried. Sourced from trusted local suppliers.</p>
+                <div class="offer">$4 OFF</div>
+                <p>Fresh catch of the day, grilled to perfection. Start your weekend right.</p>
             </div>
 
-            <!-- SATURDAY -->
             <div class="special-card">
                 <div class="day-label">Saturday</div>
-                <h3>$2 Off Salads</h3>
-                <div class="offer">Fresh & Light</div>
-                <p>Crisp greens, seasonal vegetables, and house-made dressings. Add grilled protein for the perfect meal. Customizable to your dietary preferences.</p>
+                <h3>Salad Celebration</h3>
+                <div class="offer">$2 OFF</div>
+                <p>Fresh greens, premium proteins, and house-made dressings. Light and satisfying.</p>
             </div>
         </div>
     </section>
 
-    <!-- FULL MENU -->
+    <!-- MENU SECTION -->
     <section class="menu-section" id="menu">
         <div class="menu-container">
             <div class="section-header">
-                <h2>The <span class="accent-text">Menu</span></h2>
-                <p>Explore our full selection of delicious dishes</p>
+                <h2>The <span style="color: var(--accent-red);">Menu</span></h2>
+                <p>Explore our full selection of premium dishes</p>
             </div>
 
-            <!-- CATEGORY NAVIGATION -->
+            <!-- Category Navigation -->
             <div class="category-nav">
                 <button class="category-btn active" onclick="filterMenu('appetizers')">🍽️ Appetizers</button>
                 <button class="category-btn" onclick="filterMenu('salads')">🥗 Salads</button>
@@ -761,228 +578,169 @@
                 <button class="category-btn" onclick="filterMenu('wings')">🍗 Wings</button>
             </div>
 
-            <!-- MENU GRID -->
+            <!-- Menu Grid -->
             <div class="menu-grid" id="menuGrid">
-                <!-- Menu items will be dynamically generated -->
+                <!-- Menu items will be generated here -->
             </div>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
     <section class="about-section" id="about">
-        <div class="about-content">
-            <h2>Crafted with <span class="accent-text">Passion</span></h2>
-            <p>For over a decade, we've been committed to serving our community with exceptional food and genuine hospitality. Every dish is prepared with care, using the finest ingredients we can source.</p>
-            <p>Our kitchen is a reflection of our values: quality, authenticity, and respect for the craft. We believe that great food brings people together, and we're honored to be part of your celebrations, gatherings, and everyday moments.</p>
-            <p>Visit us today and experience the difference that passion makes.</p>
+        <div>
+            <h2>About <span style="color: var(--accent-red);">Artisan Kitchen</span></h2>
+            <p>For over 20 years, we've been crafting exceptional dishes with the finest ingredients and time-honored techniques.</p>
+            <p>Our passion is <span class="accent-text">your satisfaction</span>. Every plate that leaves our kitchen is prepared with care, creativity, and pride.</p>
+            <p>Join us for an unforgettable dining experience where tradition meets innovation.</p>
         </div>
-        <div class="about-image">🍴</div>
-    </section>
-
-    <!-- CTA SECTION -->
-    <section class="cta-section" id="contact">
-        <h2>Ready to Experience Excellence?</h2>
-        <p>Join us for an unforgettable meal. We're open 7 days a week.</p>
-        <a href="tel:+1234567890" class="cta-button">📞 Reserve Your Table</a>
+        <div style="background: url('assets/about-image.jpg') center/cover; border-radius: 8px; min-height: 400px;"></div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Hours</h4>
-                <p>Monday – Thursday: 11am – 10pm<br>
-                Friday – Saturday: 11am – 11pm<br>
-                Sunday: 10am – 9pm</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Location</h4>
-                <p>123 Main Street<br>
-                Your City, State 12345<br>
-                <a href="tel:+1234567890">(123) 456-7890</a><br>
-                <a href="mailto:info@artisankitchen.com">info@artisankitchen.com</a></p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <p>
-                    <a href="#">Facebook</a><br>
-                    <a href="#">Instagram</a><br>
-                    <a href="#">Twitter</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2024 Artisan Kitchen. All rights reserved. Crafted with passion.</p>
-        </div>
+        <p><strong>Artisan Kitchen</strong></p>
+        <p>📍 123 Duss Ave, Ambridge, PA 15003</p>
+        <p>📞 <a href="tel:+1234567890">(123) 456-7890</a></p>
+        <p>⏰ Mon-Sat: 12 PM - 10 PM | Sunday: Closed</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2024 Artisan Kitchen. All rights reserved.</p>
     </footer>
 
-    <!-- ORDER TYPE MODAL -->
-    <div class="order-modal" id="orderModal">
-        <div class="order-modal-content">
-            <h2>How would you like your order?</h2>
-            <p>Choose your preferred delivery method</p>
-            <div class="order-modal-buttons">
-                <button class="order-btn" onclick="selectOrderType('pickup')">🚗 Pickup</button>
-                <button class="order-btn secondary" onclick="selectOrderType('delivery')">🚚 Delivery</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Menu Data
+        // Menu Data with Image Paths
         const menuData = {
             appetizers: [
-                { name: 'Zucchini', category: 'appetizers' },
-                { name: 'Onion Ring Row', category: 'appetizers' },
-                { name: 'Stuffed Grape Leaves', category: 'appetizers' },
-                { name: 'Chicken Tenders', category: 'appetizers' },
-                { name: 'Quesadillas', category: 'appetizers' },
-                { name: 'Blackened Grilled Shrimp', category: 'appetizers' },
-                { name: 'Combo Platter', category: 'appetizers' },
-                { name: 'Coconut Shrimp', category: 'appetizers' },
-                { name: 'Chips & Salsa', category: 'appetizers' },
-                { name: 'Ultimate Nachos', category: 'appetizers' },
-                { name: 'Pulled Pork Nachos', category: 'appetizers' },
-                { name: 'Spinach Artichoke Dip', category: 'appetizers' },
-                { name: 'Calamari', category: 'appetizers' },
-                { name: 'Mushrooms', category: 'appetizers' },
-                { name: 'Provolone Cheese Sticks', category: 'appetizers' },
-                { name: 'Potato Skins', category: 'appetizers' },
-                { name: 'Stuffed Banana Peppers', category: 'appetizers' },
-                { name: 'Soft Pretzel Twists', category: 'appetizers' }
+                { name: 'Zucchini', img: 'assets/food/zucchini.png', size: 'medium' },
+                { name: 'Onion Ring Row', img: 'assets/food/onion-rings.png', size: 'large' },
+                { name: 'Stuffed Grape Leaves', img: 'assets/food/grape-leaves.png', size: 'medium' },
+                { name: 'Chicken Tenders', img: 'assets/food/chicken-tenders.png', size: 'large' },
+                { name: 'Quesadillas', img: 'assets/food/quesadillas.png', size: 'large' },
+                { name: 'Blackened Grilled Shrimp', img: 'assets/food/shrimp.png', size: 'medium' },
+                { name: 'Combo Platter', img: 'assets/food/combo-platter.png', size: 'large' },
+                { name: 'Coconut Shrimp', img: 'assets/food/coconut-shrimp.png', size: 'medium' },
+                { name: 'Chips & Salsa', img: 'assets/food/chips-salsa.png', size: 'medium' },
+                { name: 'Ultimate Nachos', img: 'assets/food/nachos.png', size: 'large' },
+                { name: 'Pulled Pork Nachos', img: 'assets/food/pork-nachos.png', size: 'large' },
+                { name: 'Spinach Artichoke Dip', img: 'assets/food/spinach-dip.png', size: 'medium' },
+                { name: 'Calamari', img: 'assets/food/calamari.png', size: 'medium' },
+                { name: 'Mushrooms', img: 'assets/food/mushrooms.png', size: 'small' },
+                { name: 'Provolone Cheese Sticks', img: 'assets/food/cheese-sticks.png', size: 'medium' },
+                { name: 'Potato Skins', img: 'assets/food/potato-skins.png', size: 'medium' },
+                { name: 'Stuffed Banana Peppers', img: 'assets/food/banana-peppers.png', size: 'small' },
+                { name: 'Soft Pretzel Twists', img: 'assets/food/pretzel.png', size: 'medium' }
             ],
             salads: [
-                { name: 'Grilled Chicken Salad', category: 'salads' },
-                { name: 'Crispy Chicken Salad', category: 'salads' },
-                { name: 'Fish Salad', category: 'salads' },
-                { name: 'Bacon Cheeseburger Salad', category: 'salads' },
-                { name: 'Caesar Salad', category: 'salads' },
-                { name: 'Grilled Gulf Shrimp Caesar', category: 'salads' },
-                { name: 'Grilled Chicken Caesar', category: 'salads' },
-                { name: 'Virginia Ham Salad', category: 'salads' },
-                { name: 'Steak Salad', category: 'salads' },
-                { name: 'Salmon Salad', category: 'salads' },
-                { name: 'Greek Gyro Salad', category: 'salads' },
-                { name: 'House Salad', category: 'salads' },
-                { name: 'Big House Salad', category: 'salads' },
-                { name: 'Buffalo Blue Chicken Salad', category: 'salads' }
+                { name: 'Grilled Chicken Salad', img: 'assets/food/chicken-salad.png', size: 'large' },
+                { name: 'Crispy Chicken Salad', img: 'assets/food/crispy-chicken-salad.png', size: 'large' },
+                { name: 'Fish Salad', img: 'assets/food/fish-salad.png', size: 'medium' },
+                { name: 'Bacon Cheeseburger Salad', img: 'assets/food/burger-salad.png', size: 'large' },
+                { name: 'Caesar Salad', img: 'assets/food/caesar-salad.png', size: 'medium' },
+                { name: 'Grilled Gulf Shrimp Caesar', img: 'assets/food/shrimp-caesar.png', size: 'large' },
+                { name: 'Grilled Chicken Caesar', img: 'assets/food/chicken-caesar.png', size: 'large' },
+                { name: 'Virginia Ham Salad', img: 'assets/food/ham-salad.png', size: 'medium' },
+                { name: 'Steak Salad', img: 'assets/food/steak-salad.png', size: 'large' },
+                { name: 'Salmon Salad', img: 'assets/food/salmon-salad.png', size: 'medium' },
+                { name: 'Greek Gyro Salad', img: 'assets/food/gyro-salad.png', size: 'large' },
+                { name: 'House Salad', img: 'assets/food/house-salad.png', size: 'medium' },
+                { name: 'Big House Salad', img: 'assets/food/big-house-salad.png', size: 'large' },
+                { name: 'Buffalo Blue Chicken Salad', img: 'assets/food/buffalo-salad.png', size: 'large' }
             ],
             sandwiches: [
-                { name: 'Crazy Pulled Pork', category: 'sandwiches' },
-                { name: "Johnny's CheeseSteak", category: 'sandwiches' },
-                { name: 'Chicken Philly Steak', category: 'sandwiches' },
-                { name: 'Reuben', category: 'sandwiches' },
-                { name: 'Grilled Hot Sausage', category: 'sandwiches' },
-                { name: 'Meatball Volcano', category: 'sandwiches' },
-                { name: 'Italian Hoagie', category: 'sandwiches' },
-                { name: 'Shrimp PoBoy', category: 'sandwiches' },
-                { name: 'Grilled Salmon Sandwich', category: 'sandwiches' },
-                { name: 'Crab Cake Sandwich', category: 'sandwiches' },
-                { name: 'Grilled Chicken Sandwich', category: 'sandwiches' },
-                { name: 'Buffalo Hot Chicken', category: 'sandwiches' },
-                { name: 'Tuscan Chicken', category: 'sandwiches' },
-                { name: 'Monterey Jack Chicken', category: 'sandwiches' },
-                { name: 'Fried Grouper Sandwich', category: 'sandwiches' },
-                { name: 'Fried Fish Sandwich', category: 'sandwiches' },
-                { name: 'Roast Beef Dip', category: 'sandwiches' },
-                { name: 'Panini', category: 'sandwiches' },
-                { name: 'Mile High Ham', category: 'sandwiches' }
+                { name: 'Crazy Pulled Pork', img: 'assets/food/pulled-pork.png', size: 'large' },
+                { name: "Johnny's CheeseSteak", img: 'assets/food/cheesesteak.png', size: 'large' },
+                { name: 'Chicken Philly Steak', img: 'assets/food/chicken-philly.png', size: 'large' },
+                { name: 'Reuben', img: 'assets/food/reuben.png', size: 'large' },
+                { name: 'Grilled Hot Sausage', img: 'assets/food/sausage.png', size: 'medium' },
+                { name: 'Meatball Volcano', img: 'assets/food/meatball.png', size: 'large' },
+                { name: 'Italian Hoagie', img: 'assets/food/hoagie.png', size: 'large' },
+                { name: 'Shrimp PoBoy', img: 'assets/food/poboy.png', size: 'large' },
+                { name: 'Grilled Salmon Sandwich', img: 'assets/food/salmon-sandwich.png', size: 'medium' },
+                { name: 'Crab Cake Sandwich', img: 'assets/food/crab-cake.png', size: 'medium' },
+                { name: 'Grilled Chicken Sandwich', img: 'assets/food/chicken-sandwich.png', size: 'medium' },
+                { name: 'Buffalo Hot Chicken', img: 'assets/food/buffalo-chicken.png', size: 'large' },
+                { name: 'Tuscan Chicken', img: 'assets/food/tuscan-chicken.png', size: 'medium' },
+                { name: 'Monterey Jack Chicken', img: 'assets/food/monterey-chicken.png', size: 'medium' },
+                { name: 'Fried Grouper Sandwich', img: 'assets/food/grouper.png', size: 'medium' },
+                { name: 'Fried Fish Sandwich', img: 'assets/food/fish-sandwich.png', size: 'medium' },
+                { name: 'Roast Beef Dip', img: 'assets/food/roast-beef.png', size: 'large' },
+                { name: 'Panini', img: 'assets/food/panini.png', size: 'medium' },
+                { name: 'Mile High Ham', img: 'assets/food/ham-sandwich.png', size: 'large' }
             ],
             dinners: [
-                { name: 'Meatloaf', category: 'dinners' },
-                { name: 'Chargrilled Chicken', category: 'dinners' },
-                { name: 'Buffalo Blue Chicken', category: 'dinners' },
-                { name: 'Smokey Mountain Chicken', category: 'dinners' },
-                { name: 'Honey Glazed Chicken', category: 'dinners' },
-                { name: 'Grande Ravioli', category: 'dinners' },
-                { name: 'Fried Shrimp Dinner', category: 'dinners' },
-                { name: 'Chicken Parmigiana', category: 'dinners' },
-                { name: 'Blackened Tilapia', category: 'dinners' },
-                { name: 'Grilled Salmon', category: 'dinners' },
-                { name: 'Pot Roast', category: 'dinners' },
-                { name: 'Eggplant Parmigiana', category: 'dinners' },
-                { name: 'Portobello Grille', category: 'dinners' }
+                { name: 'Meatloaf', img: 'assets/food/meatloaf.png', size: 'medium' },
+                { name: 'Chargrilled Chicken', img: 'assets/food/grilled-chicken.png', size: 'medium' },
+                { name: 'Buffalo Blue Chicken', img: 'assets/food/buffalo-chicken-dinner.png', size: 'medium' },
+                { name: 'Smokey Mountain Chicken', img: 'assets/food/smokey-chicken.png', size: 'medium' },
+                { name: 'Honey Glazed Chicken', img: 'assets/food/honey-chicken.png', size: 'medium' },
+                { name: 'Grande Ravioli', img: 'assets/food/ravioli.png', size: 'medium' },
+                { name: 'Fried Shrimp Dinner', img: 'assets/food/fried-shrimp.png', size: 'medium' },
+                { name: 'Chicken Parmigiana', img: 'assets/food/chicken-parm.png', size: 'medium' },
+                { name: 'Blackened Tilapia', img: 'assets/food/tilapia.png', size: 'medium' },
+                { name: 'Grilled Salmon', img: 'assets/food/grilled-salmon.png', size: 'medium' },
+                { name: 'Pot Roast', img: 'assets/food/pot-roast.png', size: 'medium' },
+                { name: 'Eggplant Parmigiana', img: 'assets/food/eggplant-parm.png', size: 'medium' },
+                { name: 'Portobello Grille', img: 'assets/food/portobello.png', size: 'small' }
             ],
             pasta: [
-                { name: 'Angel Hair', category: 'pasta' },
-                { name: 'Chicken Topped Pasta', category: 'pasta' },
-                { name: 'Grilled Shrimp Topped Pasta', category: 'pasta' }
+                { name: 'Angel Hair', img: 'assets/food/angel-hair.png', size: 'medium' },
+                { name: 'Chicken Topped Pasta', img: 'assets/food/chicken-pasta.png', size: 'medium' },
+                { name: 'Grilled Shrimp Topped Pasta', img: 'assets/food/shrimp-pasta.png', size: 'medium' }
             ],
             children: [
-                { name: 'Chicken Fingers & Fries', category: 'children' },
-                { name: 'Angel Hair Pasta (Butter or Marinara)', category: 'children' },
-                { name: 'Cheeseburger & Fries', category: 'children' },
-                { name: 'Grilled Cheese & Fries', category: 'children' }
+                { name: 'Chicken Fingers & Fries', img: 'assets/food/chicken-fingers.png', size: 'medium' },
+                { name: 'Angel Hair Pasta (Butter or Marinara)', img: 'assets/food/kids-pasta.png', size: 'small' },
+                { name: 'Cheeseburger & Fries', img: 'assets/food/kids-burger.png', size: 'medium' },
+                { name: 'Grilled Cheese & Fries', img: 'assets/food/grilled-cheese.png', size: 'small' }
             ],
             potato: [
-                { name: 'Sweet Potato Fries', category: 'potato' },
-                { name: 'Fresh Cut French Fries', category: 'potato' },
-                { name: 'Large Plate of Fries', category: 'potato' },
-                { name: 'Fully Loaded Fries', category: 'potato' },
-                { name: 'Ultimate Fries', category: 'potato' },
-                { name: 'Cheese Fries (Large)', category: 'potato' },
-                { name: 'Rancho Fries', category: 'potato' },
-                { name: 'Gyro Fries', category: 'potato' },
-                { name: 'Cheese Steak Fries', category: 'potato' }
+                { name: 'Sweet Potato Fries', img: 'assets/food/sweet-fries.png', size: 'medium' },
+                { name: 'Fresh Cut French Fries', img: 'assets/food/fries.png', size: 'medium' },
+                { name: 'Large Plate of Fries', img: 'assets/food/large-fries.png', size: 'large' },
+                { name: 'Fully Loaded Fries', img: 'assets/food/loaded-fries.png', size: 'large' },
+                { name: 'Ultimate Fries', img: 'assets/food/ultimate-fries.png', size: 'large' },
+                { name: 'Cheese Fries (Large)', img: 'assets/food/cheese-fries.png', size: 'large' },
+                { name: 'Rancho Fries', img: 'assets/food/rancho-fries.png', size: 'large' },
+                { name: 'Gyro Fries', img: 'assets/food/gyro-fries.png', size: 'large' },
+                { name: 'Cheese Steak Fries', img: 'assets/food/cheesesteak-fries.png', size: 'large' }
             ],
             wings: [
-                { name: 'Order of 8 - Seasoned', category: 'wings' },
-                { name: 'Order of 8 - Bang-Bang', category: 'wings' },
-                { name: 'Order of 8 - Garlic Parmesan', category: 'wings' },
-                { name: 'Order of 8 - Honey Mustard', category: 'wings' },
-                { name: 'Order of 8 - Ranch', category: 'wings' },
-                { name: 'Order of 8 - Old Bay', category: 'wings' },
-                { name: 'Order of 8 - Mild', category: 'wings' },
-                { name: 'Order of 8 - Hot Buffalo', category: 'wings' },
-                { name: 'Order of 8 - Jamaican Jerk', category: 'wings' },
-                { name: 'Order of 8 - BBQ', category: 'wings' },
-                { name: 'Order of 8 - Ranchero', category: 'wings' },
-                { name: 'Order of 8 - Dry Cajun', category: 'wings' },
-                { name: 'Order of 24 - Seasoned', category: 'wings' },
-                { name: 'Order of 24 - Bang-Bang', category: 'wings' },
-                { name: 'Order of 24 - Garlic Parmesan', category: 'wings' },
-                { name: 'Order of 24 - Honey Mustard', category: 'wings' },
-                { name: 'Order of 24 - Ranch', category: 'wings' },
-                { name: 'Order of 24 - Old Bay', category: 'wings' },
-                { name: 'Order of 24 - Mild', category: 'wings' },
-                { name: 'Order of 24 - Hot Buffalo', category: 'wings' },
-                { name: 'Order of 24 - Jamaican Jerk', category: 'wings' },
-                { name: 'Order of 24 - BBQ', category: 'wings' },
-                { name: 'Order of 24 - Ranchero', category: 'wings' },
-                { name: 'Order of 24 - Dry Cajun', category: 'wings' },
-                { name: 'Order of Boneless Wings - Seasoned', category: 'wings' },
-                { name: 'Order of Boneless Wings - Bang-Bang', category: 'wings' },
-                { name: 'Order of Boneless Wings - Garlic Parmesan', category: 'wings' },
-                { name: 'Order of Boneless Wings - Honey Mustard', category: 'wings' },
-                { name: 'Order of Boneless Wings - Ranch', category: 'wings' },
-                { name: 'Order of Boneless Wings - Old Bay', category: 'wings' },
-                { name: 'Order of Boneless Wings - Mild', category: 'wings' },
-                { name: 'Order of Boneless Wings - Hot Buffalo', category: 'wings' },
-                { name: 'Order of Boneless Wings - Jamaican Jerk', category: 'wings' },
-                { name: 'Order of Boneless Wings - BBQ', category: 'wings' },
-                { name: 'Order of Boneless Wings - Ranchero', category: 'wings' },
-                { name: 'Order of Boneless Wings - Dry Cajun', category: 'wings' }
+                { name: 'Order of 8 - Seasoned', img: 'assets/food/wings.png', size: 'medium' },
+                { name: 'Order of 8 - Bang-Bang', img: 'assets/food/wings-bang-bang.png', size: 'medium' },
+                { name: 'Order of 8 - Garlic Parmesan', img: 'assets/food/wings-garlic.png', size: 'medium' },
+                { name: 'Order of 8 - Honey Mustard', img: 'assets/food/wings-honey.png', size: 'medium' },
+                { name: 'Order of 8 - Ranch', img: 'assets/food/wings-ranch.png', size: 'medium' },
+                { name: 'Order of 8 - Old Bay', img: 'assets/food/wings-oldbay.png', size: 'medium' },
+                { name: 'Order of 8 - Mild', img: 'assets/food/wings-mild.png', size: 'medium' },
+                { name: 'Order of 8 - Hot Buffalo', img: 'assets/food/wings-buffalo.png', size: 'medium' },
+                { name: 'Order of 8 - Jamaican Jerk', img: 'assets/food/wings-jerk.png', size: 'medium' },
+                { name: 'Order of 8 - BBQ', img: 'assets/food/wings-bbq.png', size: 'medium' },
+                { name: 'Order of 8 - Ranchero', img: 'assets/food/wings-ranchero.png', size: 'medium' },
+                { name: 'Order of 8 - Dry Cajun', img: 'assets/food/wings-cajun.png', size: 'medium' },
+                { name: 'Order of 24 - Seasoned', img: 'assets/food/wings-24.png', size: 'large' },
+                { name: 'Order of 24 - Bang-Bang', img: 'assets/food/wings-24-bang.png', size: 'large' },
+                { name: 'Order of 24 - Garlic Parmesan', img: 'assets/food/wings-24-garlic.png', size: 'large' },
+                { name: 'Order of 24 - Honey Mustard', img: 'assets/food/wings-24-honey.png', size: 'large' },
+                { name: 'Order of 24 - Ranch', img: 'assets/food/wings-24-ranch.png', size: 'large' },
+                { name: 'Order of 24 - Old Bay', img: 'assets/food/wings-24-oldbay.png', size: 'large' },
+                { name: 'Order of 24 - Mild', img: 'assets/food/wings-24-mild.png', size: 'large' },
+                { name: 'Order of 24 - Hot Buffalo', img: 'assets/food/wings-24-buffalo.png', size: 'large' },
+                { name: 'Order of 24 - Jamaican Jerk', img: 'assets/food/wings-24-jerk.png', size: 'large' },
+                { name: 'Order of 24 - BBQ', img: 'assets/food/wings-24-bbq.png', size: 'large' },
+                { name: 'Order of 24 - Ranchero', img: 'assets/food/wings-24-ranchero.png', size: 'large' },
+                { name: 'Order of 24 - Dry Cajun', img: 'assets/food/wings-24-cajun.png', size: 'large' },
+                { name: 'Order of Boneless Wings - Seasoned', img: 'assets/food/boneless-wings.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Bang-Bang', img: 'assets/food/boneless-bang.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Garlic Parmesan', img: 'assets/food/boneless-garlic.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Honey Mustard', img: 'assets/food/boneless-honey.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Ranch', img: 'assets/food/boneless-ranch.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Old Bay', img: 'assets/food/boneless-oldbay.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Mild', img: 'assets/food/boneless-mild.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Hot Buffalo', img: 'assets/food/boneless-buffalo.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Jamaican Jerk', img: 'assets/food/boneless-jerk.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - BBQ', img: 'assets/food/boneless-bbq.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Ranchero', img: 'assets/food/boneless-ranchero.png', size: 'medium' },
+                { name: 'Order of Boneless Wings - Dry Cajun', img: 'assets/food/boneless-cajun.png', size: 'medium' }
             ]
         };
-
-        let currentCategory = 'appetizers';
-        let selectedItem = null;
-
-        function filterMenu(category) {
-            currentCategory = category;
-
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Render menu
-            renderMenu(category);
-        }
 
         function renderMenu(category) {
             const menuGrid = document.getElementById('menuGrid');
@@ -997,40 +755,26 @@
                 itemDiv.innerHTML = `
                     <h3>${item.name}</h3>
                     <p>Delicious ${category} item prepared fresh daily with premium ingredients.</p>
+                    <img src="${item.img}" alt="${item.name}" class="menu-item-img img-${item.size}">
                 `;
 
-                itemDiv.addEventListener('click', () => openOrderModal(item.name));
                 menuGrid.appendChild(itemDiv);
             });
         }
 
-        function openOrderModal(itemName) {
-            selectedItem = itemName;
-            document.getElementById('orderModal').classList.add('active');
-        }
-
-        function selectOrderType(orderType) {
-            // Save to localStorage
-            localStorage.setItem('orderType', orderType);
-            localStorage.setItem('selectedItem', selectedItem);
-
-            // Redirect to menu.html
-            window.location.href = 'menu.html';
-        }
-
-        // Initial render
-        renderMenu('appetizers');
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+        function filterMenu(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
-        });
+            event.target.classList.add('active');
+
+            // Render menu
+            renderMenu(category);
+        }
+
+        // Initialize with appetizers
+        renderMenu('appetizers');
     </script>
 </body>
 </html>
