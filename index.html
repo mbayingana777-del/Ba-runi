@@ -343,17 +343,20 @@
     position: absolute;
     bottom: 12px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 8px);
     font-size: 0.8rem;
-    color: #aaa;
+    color: #ffa94d;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(255, 169, 77, 0.4);
+    transition: all 0.25s ease;
     pointer-events: none;
 }
 
-        .menu-item-card:hover::after {
-            opacity: 1;
-        }
+.menu-item-card:hover::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
 
         .menu-item-card h3 {
             font-size: 1.3rem;
