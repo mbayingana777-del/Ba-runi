@@ -193,15 +193,14 @@
             margin-bottom: 3rem;
         }
 
-        .special-card {
-            background: var(--secondary-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+        .specials-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+}
 
         .special-card::before {
             content: '';
