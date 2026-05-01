@@ -163,7 +163,7 @@
             box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
         }
 
-        /* ─── WEEKLY SPECIALS SECTION ─────────────────────────────── */
+        /* ─── WEEKLY SPECIALS SECTION (HORIZONTAL SLIDER) ─────────────────────────────── */
         .specials-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -186,21 +186,41 @@
             font-size: 1.1rem;
         }
 
+        /* Horizontal Slider Container */
         .specials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             gap: 2rem;
             margin-bottom: 3rem;
+            padding: 2rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
+        /* Hide scrollbar */
+        .specials-grid::-webkit-scrollbar {
+            display: none;
+        }
         .specials-grid {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 1rem 0;
-    scroll-behavior: smooth;
-}
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .special-card {
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 0 0 300px;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            opacity: 0.65;
+            transform: scale(0.9);
+        }
 
         .special-card::before {
             content: '';
@@ -215,9 +235,21 @@
             transition: transform 0.3s ease;
         }
 
+        /* Active (center) card styling */
+        .special-card.active {
+            opacity: 1;
+            transform: scale(1.05);
+            border-color: var(--accent-red);
+            box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
+        }
+
+        .special-card.active::before {
+            transform: scaleX(1);
+        }
+
+        /* Hover effect */
         .special-card:hover {
             border-color: var(--accent-red);
-            transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
         }
 
@@ -472,6 +504,11 @@
             .menu-item-img.img-large {
                 width: 70px;
             }
+
+            /* Mobile: Show 1 card + partial next */
+            .special-card {
+                flex: 0 0 calc(100% - 2rem);
+            }
         }
     </style>
 </head>
@@ -498,57 +535,57 @@
         </div>
     </section>
 
-    <!-- WEEKLY SPECIALS SECTION -->
+    <!-- WEEKLY SPECIALS SECTION (HORIZONTAL SLIDER) -->
     <section class="specials-section" id="specials">
         <div class="section-header">
             <h2>Weekly <span style="color: var(--accent-red);">Specials</span></h2>
             <p>Fresh, limited-time offers every day</p>
         </div>
 
-        <div class="specials-grid">
-            <div class="special-card">
+        <div class="specials-grid" id="specialsSlider">
+            <div class="special-card" data-day="0">
                 <div class="day-label">Sunday</div>
                 <h3>Wing Day</h3>
                 <div class="offer">50% OFF</div>
                 <p>Enjoy our signature wings with your choice of 12 premium flavors. Perfect for game day!</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="1">
                 <div class="day-label">Monday</div>
                 <h3>Flatbread Night</h3>
                 <div class="offer">$2 OFF</div>
                 <p>Crispy, wood-fired flatbreads with gourmet toppings. Start your week delicious.</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="2">
                 <div class="day-label">Tuesday</div>
                 <h3>Burger Bliss</h3>
                 <div class="offer">$2 OFF</div>
                 <p>Handcrafted burgers with premium beef and fresh toppings. Juicy perfection.</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="3">
                 <div class="day-label">Wednesday</div>
                 <h3>Lasagna Day</h3>
                 <div class="offer">$3 OFF</div>
                 <p>Layers of homemade pasta, rich sauce, and melted cheese. Comfort food at its finest.</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="4">
                 <div class="day-label">Thursday</div>
                 <h3>Greek Night</h3>
                 <div class="offer">$2.50 OFF</div>
                 <p>Mediterranean flavors with feta, olives, and fresh vegetables. A taste of the islands.</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="5">
                 <div class="day-label">Friday</div>
                 <h3>Fish & Seafood</h3>
                 <div class="offer">$4 OFF</div>
                 <p>Fresh catch of the day, grilled to perfection. Start your weekend right.</p>
             </div>
 
-            <div class="special-card">
+            <div class="special-card" data-day="6">
                 <div class="day-label">Saturday</div>
                 <h3>Salad Celebration</h3>
                 <div class="offer">$2 OFF</div>
@@ -605,6 +642,75 @@
     </footer>
 
     <script>
+        // ═══════════════════════════════════════════════════════════════════
+        // SPECIALS SLIDER - CENTER-FOCUSED HORIZONTAL SCROLL
+        // ═══════════════════════════════════════════════════════════════════
+        
+        const specialsSlider = document.getElementById('specialsSlider');
+        const specialCards = document.querySelectorAll('.special-card');
+
+        // Function to detect which card is closest to center
+        function updateActiveCard() {
+            const sliderRect = specialsSlider.getBoundingClientRect();
+            const sliderCenter = sliderRect.left + sliderRect.width / 2;
+
+            let closestCard = null;
+            let closestDistance = Infinity;
+
+            specialCards.forEach(card => {
+                const cardRect = card.getBoundingClientRect();
+                const cardCenter = cardRect.left + cardRect.width / 2;
+                const distance = Math.abs(cardCenter - sliderCenter);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestCard = card;
+                }
+            });
+
+            // Remove active class from all cards
+            specialCards.forEach(card => card.classList.remove('active'));
+
+            // Add active class to closest card
+            if (closestCard) {
+                closestCard.classList.add('active');
+            }
+        }
+
+        // Listen to scroll events
+        specialsSlider.addEventListener('scroll', updateActiveCard);
+
+        // Auto-scroll to today's special on page load
+        function scrollToToday() {
+            const today = new Date().getDay(); // 0 = Sunday, 6 = Saturday
+            const todayCard = document.querySelector(`[data-day="${today}"]`);
+
+            if (todayCard) {
+                // Scroll card to center with smooth behavior
+                todayCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+
+                // Trigger active state after scroll completes
+                setTimeout(updateActiveCard, 500);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            scrollToToday();
+            updateActiveCard();
+        });
+
+        // Also update on resize
+        window.addEventListener('resize', updateActiveCard);
+
+        // ═══════════════════════════════════════════════════════════════════
+        // MENU FUNCTIONALITY
+        // ═══════════════════════════════════════════════════════════════════
+
         // Menu Data with Image Paths
         const menuData = {
             appetizers: [
