@@ -994,10 +994,11 @@
                 itemDiv.className = 'menu-item-card';
                 itemDiv.style.animationDelay = `${index * 0.05}s`;
 
-                itemDiv.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <p>Delicious ${category} item prepared fresh daily with premium ingredients.</p>
-                `;
+itemDiv.innerHTML = `
+    <h3>${item.name}</h3>
+    <p>Delicious ${category} item prepared fresh daily with premium ingredients.</p>
+    <img src="${item.img}" alt="${item.name}" class="menu-item-img img-${item.size}">
+`;
 
                 itemDiv.addEventListener('click', () => openOrderModal(item.name));
                 menuGrid.appendChild(itemDiv);
