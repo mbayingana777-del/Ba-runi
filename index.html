@@ -809,6 +809,28 @@
 
         // Initialize with appetizers
         renderMenu('appetizers');
+        function centerTodaySpecial() {
+    const slider = document.getElementById('specialsSlider');
+    const cards = document.querySelectorAll('.special-card');
+
+    const today = new Date().getDay(); // timezone-aware
+
+    cards.forEach(card => {
+        if (parseInt(card.dataset.day) === today) {
+            card.classList.add('active');
+
+            const offset = card.offsetLeft - (slider.offsetWidth / 2) + (card.offsetWidth / 2);
+
+            slider.scrollTo({
+                left: offset,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+// Run when page loads
+window.addEventListener('load', centerTodaySpecial);
     </script>
 </body>
 </html>
