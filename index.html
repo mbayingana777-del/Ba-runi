@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Kitchen - Weekly Specials & Fresh Cuisine</title>
+    <title>Artisan Kitchen - Premium Dining Experience</title>
     <style>
         * {
             margin: 0;
@@ -11,244 +11,157 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-dark: #0f0f0f;
-            --secondary-dark: #1a1a1a;
-            --accent-red: #d32f2f;
-            --accent-green: #2e7d32;
-            --text-light: #f5f5f5;
-            --text-muted: #b0b0b0;
-            --border-color: #333;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--primary-dark);
-            color: var(--text-light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
             line-height: 1.6;
         }
 
-        /* ─── HEADER / NAV ─────────────────────────────────────────── */
-        header {
-            background: var(--secondary-dark);
-            border-bottom: 1px solid var(--border-color);
+        /* ===== NAVIGATION ===== */
+        nav {
             position: sticky;
             top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
+            z-index: 1000;
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(211, 47, 47, 0.2);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-red);
-            letter-spacing: 1px;
+            color: #d32f2f;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .logo img {
-            height: 60px;
+            height: 50px;
             width: auto;
-            display: block;
             object-fit: contain;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
         }
 
-        nav a {
-            color: var(--text-light);
+        .nav-links a {
+            color: #e0e0e0;
             text-decoration: none;
-            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-red);
+        .nav-links a:hover {
+            color: #d32f2f;
         }
 
-        .phone-cta {
-            background: var(--accent-red);
+        .call-btn {
+            background-color: #d32f2f;
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .phone-cta:hover {
-            background: #b71c1c;
+        .call-btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
         }
 
-        /* ─── HERO SECTION ─────────────────────────────────────────── */
+        /* ===== HERO ===== */
         .hero {
-            min-height: 70vh;
-            background: 
-                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-                url('assets/baruni-hero-neon.jpg') center/cover no-repeat;
+            height: 70vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,.4) 100%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
             padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
+        .hero-content h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            letter-spacing: -1px;
-            line-height: 1.1;
-            text-shadow: 0 0 20px rgba(211,47,47,0.6);
+            color: #d32f2f;
         }
 
-        .hero .accent-text {
-            color: var(--accent-red);
-        }
-
-        .hero p {
+        .hero-content p {
             font-size: 1.3rem;
-            color: var(--text-muted);
             margin-bottom: 2rem;
-            font-weight: 300;
+            color: #b0b0b0;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-red);
+        .hero-btn {
+            background-color: #d32f2f;
             color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent-red);
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent-red);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
-        }
-
-        /* ─── WEEKLY SPECIALS SECTION ─────────────────────────────── */
-        .specials-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* ✅ SLIDER CONTROLS */
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .slider-controls button {
-            background: var(--accent-red);
-            color: white;
+            padding: 1rem 2rem;
             border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 1rem;
             cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
             transition: all 0.3s ease;
-            type: button;
         }
 
-        .slider-controls button:hover {
-            background: #b71c1c;
+        .hero-btn:hover {
+            background-color: #b71c1c;
             transform: scale(1.05);
         }
 
-        /* ✅ HORIZONTAL SLIDER */
+        /* ===== WEEKLY SPECIALS SLIDER ===== */
+        .specials-section {
+            padding: 4rem 2rem;
+            background-color: #1a1a1a;
+        }
+
+        .specials-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #d32f2f;
+        }
+
+        .specials-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .specials-slider {
             display: flex;
-            gap: 2rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding: 1rem 1.5rem;
+            gap: 1.5rem;
+            padding: 1.5rem;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
 
         .specials-slider::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .specials-slider::-webkit-scrollbar-track {
-            background: var(--primary-dark);
-        }
-
-        .specials-slider::-webkit-scrollbar-thumb {
-            background: var(--accent-red);
-            border-radius: 10px;
+            display: none;
         }
 
         .special-card {
-            background: var(--secondary-dark);
-            border: 1px solid var(--border-color);
+            flex: 0 0 340px;
+            background-color: #2d2d2d;
+            border: 2px solid #333;
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
+            scroll-snap-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-width: 340px;
-            flex: 0 0 340px;
-            scroll-snap-align: center;
-            scroll-snap-stop: always;
         }
 
         .special-card::before {
@@ -258,118 +171,122 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+            background: linear-gradient(90deg, #d32f2f, #2e7d32);
+            animation: gradientShift 2s ease-in-out infinite;
         }
 
-        .special-card:hover {
-            border-color: var(--accent-red);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
-        .special-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* ✅ ACTIVE CARD STYLING */
         .special-card.active {
-            transform: scale(1.08);
-            border-color: var(--accent-red);
-            box-shadow: 0 20px 50px rgba(211, 47, 47, 0.4);
+            transform: scale(1.05);
+            border-color: #d32f2f;
+            box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
+            opacity: 1;
         }
 
-        .day-label {
-            font-size: 0.85rem;
-            color: var(--accent-green);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+        .special-card:not(.active) {
+            transform: scale(0.9);
+            opacity: 0.65;
         }
 
         .special-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .special-card .offer {
-            color: var(--accent-red);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            color: #d32f2f;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         .special-card p {
-            color: var(--text-muted);
+            color: #b0b0b0;
             font-size: 0.95rem;
-            line-height: 1.6;
+            margin-bottom: 1rem;
         }
 
-        /* ─── MENU SECTION ─────────────────────────────────────────── */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(211, 47, 47, 0.8);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev {
+            left: 1rem;
+        }
+
+        .slider-btn.next {
+            right: 1rem;
+        }
+
+        /* ===== MENU SECTION ===== */
         .menu-section {
-            background: var(--secondary-dark);
-            padding: 5rem 2rem;
-            margin: 3rem 0;
+            padding: 4rem 2rem;
+            background-color: #0f0f0f;
         }
 
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .menu-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #d32f2f;
         }
 
-        /* Category Navigation */
-        .category-nav {
+        .category-tabs {
             display: flex;
+            justify-content: center;
             gap: 1rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .category-btn {
-            background: var(--primary-dark);
-            color: var(--text-light);
-            border: 2px solid var(--border-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            border: 2px solid #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
             transition: all 0.3s ease;
-            type: button;
+            font-weight: 600;
         }
 
         .category-btn:hover,
         .category-btn.active {
-            background: var(--accent-red);
-            border-color: var(--accent-red);
+            background-color: #d32f2f;
             color: white;
+            border-color: #d32f2f;
         }
 
-        /* Menu Grid */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .menu-item-card {
-            background: var(--primary-dark);
-            border: 1px solid var(--border-color);
+            background-color: #1a1a1a;
+            border: 2px solid #333;
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
             cursor: pointer;
-            min-height: 200px;
         }
 
         .menu-item-card::before {
@@ -379,23 +296,40 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item-card:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+            background: linear-gradient(90deg, #d32f2f, #2e7d32);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .menu-item-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
-        /* ✅ FLOATING FOOD IMAGE SYSTEM */
+        .menu-item-card:hover {
+            border-color: #2e7d32;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
+        }
+
+        .menu-item-card h3 {
+            color: #d32f2f;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-item-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-item-price {
+            color: #2e7d32;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ===== FOOD IMAGES ===== */
         .menu-item-img {
             position: absolute;
             bottom: 10px;
@@ -409,12 +343,6 @@
             pointer-events: none;
         }
 
-        .menu-item-card:hover .menu-item-img {
-            transform: scale(1.1) rotate(-3deg);
-            opacity: 1;
-        }
-
-        /* Image Size Variations */
         .menu-item-img.img-small {
             width: 60px;
         }
@@ -427,27 +355,34 @@
             width: 90px;
         }
 
-        .menu-item-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
+        .menu-item-card:hover .menu-item-img {
+            transform: scale(1.1) rotate(-3deg);
+            opacity: 1;
         }
 
-        .menu-item-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-            padding-right: 80px;
+        @media (max-width: 768px) {
+            .menu-item-img.img-small {
+                width: 45px;
+            }
+
+            .menu-item-img.img-medium {
+                width: 55px;
+            }
+
+            .menu-item-img.img-large {
+                width: 70px;
+            }
         }
 
-        /* ─── ABOUT SECTION ─────────────────────────────────────────── */
+        /* ===== ABOUT SECTION ===== */
         .about-section {
+            padding: 4rem 2rem;
+            background-color: #1a1a1a;
+        }
+
+        .about-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
@@ -455,449 +390,338 @@
         }
 
         .about-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .about-content p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 2.5rem;
+            color: #d32f2f;
             margin-bottom: 1.5rem;
         }
 
-        .about-content .accent-text {
-            color: var(--accent-red);
-            font-weight: 600;
+        .about-content p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.8;
         }
 
         .about-image {
-            background: url('assets/about-image.jpg') center/cover;
+            height: 400px;
+            background: linear-gradient(135deg, #2d2d2d, #333);
             border-radius: 8px;
-            min-height: 400px;
+            overflow: hidden;
         }
 
-        /* ─── FOOTER ─────────────────────────────────────────── */
-        footer {
-            background: var(--secondary-dark);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--accent-red);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: var(--accent-green);
-        }
-
-        /* ─── RESPONSIVE ─────────────────────────────────────────── */
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-
-            .about-section {
+            .about-container {
                 grid-template-columns: 1fr;
             }
 
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0f0f0f;
+            border-top: 1px solid rgba(211, 47, 47, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: #808080;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
             .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: 1fr;
             }
 
-            .menu-item-img {
-                width: 55px;
+            .category-tabs {
+                gap: 0.5rem;
             }
 
-            .menu-item-img.img-small {
-                width: 45px;
-            }
-
-            .menu-item-img.img-large {
-                width: 70px;
-            }
-
-            .special-card {
-                min-width: 280px;
-                flex: 0 0 280px;
-            }
-
-            .specials-slider {
-                padding: 1rem 0.5rem;
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <img src="assets/baruni-logo-modern.png" alt="Artisan Kitchen Logo">
-            </a>
-            <ul>
-                <li><a href="#specials">Specials</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <a href="tel:+1234567890" class="phone-cta">📞 Call to Order</a>
-        </nav>
-    </header>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="assets/baruni-logo-modern.png" alt="Artisan Kitchen Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#specials">Specials</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <button class="call-btn">📞 Call Now</button>
+    </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to <span class="accent-text">Artisan Kitchen</span></h1>
-            <p>Authentic cuisine, crafted with passion</p>
-            <a href="#menu" class="cta-button">Explore Menu</a>
+            <h1>Welcome to Artisan Kitchen</h1>
+            <p>Premium Dining Experience</p>
+            <button class="hero-btn">Explore Menu</button>
         </div>
     </section>
 
-    <!-- WEEKLY SPECIALS SECTION -->
+    <!-- WEEKLY SPECIALS SLIDER -->
     <section class="specials-section" id="specials">
-        <div class="section-header">
-            <h2>Weekly <span style="color: var(--accent-red);">Specials</span></h2>
-            <p>Fresh, limited-time offers every day</p>
-        </div>
-
-        <div class="slider-controls">
-            <button type="button" onclick="scrollSlider(-1)">← Previous</button>
-            <button type="button" onclick="scrollSlider(1)">Next →</button>
-        </div>
-
-        <div class="specials-slider" id="specialsSlider">
-            <div class="special-card" data-day="0">
-                <div class="day-label">Sunday</div>
-                <h3>Wing Day</h3>
-                <div class="offer">50% OFF</div>
-                <p>Enjoy our signature wings with your choice of 12 premium flavors. Perfect for game day!</p>
+        <h2>Weekly Specials</h2>
+        <div class="specials-container">
+            <button class="slider-btn prev" type="button" onclick="scrollSlider('prev')">❮</button>
+            <div class="specials-slider" id="specials-slider">
+                <div class="special-card">
+                    <h3>Sunday Wing Day</h3>
+                    <p>$0.50 off wings. All flavors available. Perfect for game day!</p>
+                </div>
+                <div class="special-card">
+                    <h3>Monday Flatbread Night</h3>
+                    <p>Premium flatbreads with seasonal toppings. Buy 2, get 1 half off.</p>
+                </div>
+                <div class="special-card">
+                    <h3>Tuesday Burger Special</h3>
+                    <p>$2 off any burger. Includes fries and drink.</p>
+                </div>
+                <div class="special-card">
+                    <h3>Wednesday Pasta Day</h3>
+                    <p>All pasta dishes 20% off. Dine-in only.</p>
+                </div>
+                <div class="special-card">
+                    <h3>Thursday Greek Night</h3>
+                    <p>Authentic Greek specialties. $15 prix fixe menu.</p>
+                </div>
+                <div class="special-card">
+                    <h3>Friday Fish & Seafood</h3>
+                    <p>Fresh catch daily. 15% off all seafood entrees.</p>
+                </div>
+                <div class="special-card">
+                    <h3>Saturday Salad Specials</h3>
+                    <p>$2 off all salads. Add protein for just $3.</p>
+                </div>
             </div>
-
-            <div class="special-card" data-day="1">
-                <div class="day-label">Monday</div>
-                <h3>Flatbread Night</h3>
-                <div class="offer">$2 OFF</div>
-                <p>Crispy, wood-fired flatbreads with gourmet toppings. Start your week delicious.</p>
-            </div>
-
-            <div class="special-card" data-day="2">
-                <div class="day-label">Tuesday</div>
-                <h3>Burger Bliss</h3>
-                <div class="offer">$2 OFF</div>
-                <p>Handcrafted burgers with premium beef and fresh toppings. Juicy perfection.</p>
-            </div>
-
-            <div class="special-card" data-day="3">
-                <div class="day-label">Wednesday</div>
-                <h3>Lasagna Day</h3>
-                <div class="offer">$3 OFF</div>
-                <p>Layers of homemade pasta, rich sauce, and melted cheese. Comfort food at its finest.</p>
-            </div>
-
-            <div class="special-card" data-day="4">
-                <div class="day-label">Thursday</div>
-                <h3>Greek Night</h3>
-                <div class="offer">$2.50 OFF</div>
-                <p>Mediterranean flavors with feta, olives, and fresh vegetables. A taste of the islands.</p>
-            </div>
-
-            <div class="special-card" data-day="5">
-                <div class="day-label">Friday</div>
-                <h3>Fish & Seafood</h3>
-                <div class="offer">$4 OFF</div>
-                <p>Fresh catch of the day, grilled to perfection. Start your weekend right.</p>
-            </div>
-
-            <div class="special-card" data-day="6">
-                <div class="day-label">Saturday</div>
-                <h3>Salad Celebration</h3>
-                <div class="offer">$2 OFF</div>
-                <p>Fresh greens, premium proteins, and house-made dressings. Light and satisfying.</p>
-            </div>
+            <button class="slider-btn next" type="button" onclick="scrollSlider('next')">❯</button>
         </div>
     </section>
 
-    <!-- MENU SECTION -->
+    <!-- MENU -->
     <section class="menu-section" id="menu">
-        <div class="menu-container">
-            <div class="section-header">
-                <h2>The <span style="color: var(--accent-red);">Menu</span></h2>
-                <p>Explore our full selection of premium dishes</p>
-            </div>
-
-            <!-- Category Navigation -->
-            <div class="category-nav">
-                <button type="button" class="category-btn active" onclick="filterMenu('appetizers')">🍽️ Appetizers</button>
-                <button type="button" class="category-btn" onclick="filterMenu('salads')">🥗 Salads</button>
-                <button type="button" class="category-btn" onclick="filterMenu('sandwiches')">🥪 Sandwiches</button>
-                <button type="button" class="category-btn" onclick="filterMenu('dinners')">🍽️ Dinners</button>
-                <button type="button" class="category-btn" onclick="filterMenu('pasta')">🍝 Pasta</button>
-                <button type="button" class="category-btn" onclick="filterMenu('children')">🧒 Children's</button>
-                <button type="button" class="category-btn" onclick="filterMenu('potato')">🍟 Potato Patch</button>
-                <button type="button" class="category-btn" onclick="filterMenu('wings')">🍗 Wings</button>
-            </div>
-
-            <!-- Menu Grid -->
-            <div class="menu-grid" id="menuGrid">
-                <!-- Menu items will be generated here -->
-            </div>
-        </div>
+        <h2>The Menu</h2>
+        <div class="category-tabs" id="category-tabs"></div>
+        <div class="menu-grid" id="menu-grid"></div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section class="about-section" id="about">
-        <div class="about-content">
-            <h2>About <span style="color: var(--accent-red);">Artisan Kitchen</span></h2>
-            <p>For over 20 years, we've been crafting exceptional dishes with the finest ingredients and time-honored techniques.</p>
-            <p>Our passion is <span class="accent-text">your satisfaction</span>. Every plate that leaves our kitchen is prepared with care, creativity, and pride.</p>
-            <p>Join us for an unforgettable dining experience where tradition meets innovation.</p>
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About Artisan Kitchen</h2>
+                <p>Welcome to Artisan Kitchen, where culinary excellence meets warm hospitality. Since our opening, we've been committed to serving the finest quality dishes prepared with passion and attention to detail.</p>
+                <p>Our chefs source the freshest ingredients locally and internationally to create memorable dining experiences. Whether you're joining us for a casual meal or a special celebration, we're dedicated to making every visit unforgettable.</p>
+            </div>
+            <div class="about-image"></div>
         </div>
-        <div class="about-image"></div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p><strong>Artisan Kitchen</strong></p>
-        <p>📍 123 Duss Ave, Ambridge, PA 15003</p>
-        <p>📞 <a href="tel:+1234567890">(123) 456-7890</a></p>
-        <p>⏰ Mon-Sat: 12 PM - 10 PM | Sunday: Closed</p>
-        <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2024 Artisan Kitchen. All rights reserved.</p>
+        <p>&copy; 2024 Artisan Kitchen. All rights reserved. | 📍 123 Main St | 📞 (555) 123-4567</p>
     </footer>
 
     <script>
-        // Menu Data with Image Paths
+        // Menu data with all items and images
         const menuData = {
             appetizers: [
-                { name: 'Zucchini', img: 'assets/food/zucchini.png', size: 'medium' },
-                { name: 'Onion Ring Row', img: 'assets/food/onion-rings.png', size: 'large' },
-                { name: 'Stuffed Grape Leaves', img: 'assets/food/stuffed-grape-leaves.png', size: 'medium' },
-                { name: 'Chicken Tenders', img: 'assets/food/chicken-tenders.png', size: 'large' },
-                { name: 'Quesadillas', img: 'assets/food/quesadillas.png', size: 'large' },
-                { name: 'Blackened Grilled Shrimp', img: 'assets/food/shrimp.png', size: 'medium' },
-                { name: 'Combo Platter', img: 'assets/food/combo-platter.png', size: 'large' },
-                { name: 'Coconut Shrimp', img: 'assets/food/coconut-shrimp.png', size: 'medium' },
-                { name: 'Chips & Salsa', img: 'assets/food/chips-salsa.png', size: 'medium' },
-                { name: 'Ultimate Nachos', img: 'assets/food/nachos.png', size: 'large' },
-                { name: 'Pulled Pork Nachos', img: 'assets/food/pork-nachos.png', size: 'large' },
-                { name: 'Spinach Artichoke Dip', img: 'assets/food/spinach-dip.png', size: 'medium' },
-                { name: 'Calamari', img: 'assets/food/calamari.png', size: 'medium' },
-                { name: 'Mushrooms', img: 'assets/food/mushrooms.png', size: 'small' },
-                { name: 'Provolone Cheese Sticks', img: 'assets/food/cheese-sticks.png', size: 'medium' },
-                { name: 'Potato Skins', img: 'assets/food/potato-skins.png', size: 'medium' },
-                { name: 'Stuffed Banana Peppers', img: 'assets/food/banana-peppers.png', size: 'small' },
-                { name: 'Soft Pretzel Twists', img: 'assets/food/pretzel.png', size: 'medium' }
+                { name: 'Zucchini', price: '$8.99', img: 'assets/food/zucchini.png', size: 'medium' },
+                { name: 'Onion Ring Row', price: '$7.99', img: 'assets/food/onion-rings.png', size: 'medium' },
+                { name: 'Stuffed Grape Leaves', price: '$9.99', img: 'assets/food/grape-leaves.png', size: 'medium' },
+                { name: 'Chicken Tenders', price: '$10.99', img: 'assets/food/chicken-tenders.png', size: 'medium' },
+                { name: 'Quesadillas', price: '$11.99', img: 'assets/food/quesadillas.png', size: 'large' },
+                { name: 'Blackened Grilled Shrimp', price: '$12.99', img: 'assets/food/shrimp-blackened.png', size: 'medium' },
+                { name: 'Combo Platter', price: '$16.99', img: 'assets/food/combo-platter.png', size: 'large' },
+                { name: 'Coconut Shrimp', price: '$12.99', img: 'assets/food/coconut-shrimp.png', size: 'medium' },
+                { name: 'Chips & Salsa', price: '$5.99', img: 'assets/food/chips-salsa.png', size: 'small' },
+                { name: 'Ultimate Nachos', price: '$13.99', img: 'assets/food/nachos-ultimate.png', size: 'large' },
+                { name: 'Pulled Pork Nachos', price: '$14.99', img: 'assets/food/nachos-pork.png', size: 'large' },
+                { name: 'Spinach Artichoke Dip', price: '$9.99', img: 'assets/food/spinach-dip.png', size: 'medium' },
+                { name: 'Calamari', price: '$11.99', img: 'assets/food/calamari.png', size: 'medium' },
+                { name: 'Mushrooms', price: '$8.99', img: 'assets/food/mushrooms.png', size: 'small' },
+                { name: 'Provolone Cheese Sticks', price: '$7.99', img: 'assets/food/cheese-sticks.png', size: 'small' },
+                { name: 'Potato Skins', price: '$9.99', img: 'assets/food/potato-skins.png', size: 'medium' },
+                { name: 'Stuffed Banana Peppers', price: '$8.99', img: 'assets/food/banana-peppers.png', size: 'small' },
+                { name: 'Soft Pretzel Twists', price: '$6.99', img: 'assets/food/pretzel-twists.png', size: 'small' }
             ],
             salads: [
-                { name: 'Grilled Chicken Salad', img: 'assets/food/chicken-salad.png', size: 'large' },
-                { name: 'Crispy Chicken Salad', img: 'assets/food/crispy-chicken-salad.png', size: 'large' },
-                { name: 'Fish Salad', img: 'assets/food/fish-salad.png', size: 'medium' },
-                { name: 'Bacon Cheeseburger Salad', img: 'assets/food/burger-salad.png', size: 'large' },
-                { name: 'Caesar Salad', img: 'assets/food/caesar-salad.png', size: 'medium' },
-                { name: 'Grilled Gulf Shrimp Caesar', img: 'assets/food/shrimp-caesar.png', size: 'large' },
-                { name: 'Grilled Chicken Caesar', img: 'assets/food/chicken-caesar.png', size: 'large' },
-                { name: 'Virginia Ham Salad', img: 'assets/food/ham-salad.png', size: 'medium' },
-                { name: 'Steak Salad', img: 'assets/food/steak-salad.png', size: 'large' },
-                { name: 'Salmon Salad', img: 'assets/food/salmon-salad.png', size: 'medium' },
-                { name: 'Greek Gyro Salad', img: 'assets/food/gyro-salad.png', size: 'large' },
-                { name: 'House Salad', img: 'assets/food/house-salad.png', size: 'medium' },
-                { name: 'Big House Salad', img: 'assets/food/big-house-salad.png', size: 'large' },
-                { name: 'Buffalo Blue Chicken Salad', img: 'assets/food/buffalo-salad.png', size: 'large' }
+                { name: 'Grilled Chicken Salad', price: '$12.99', img: 'assets/food/salad-chicken.png', size: 'large' },
+                { name: 'Crispy Chicken Salad', price: '$12.99', img: 'assets/food/salad-crispy-chicken.png', size: 'large' },
+                { name: 'Fish Salad', price: '$13.99', img: 'assets/food/salad-fish.png', size: 'large' },
+                { name: 'Bacon Cheeseburger Salad', price: '$13.99', img: 'assets/food/salad-burger.png', size: 'large' },
+                { name: 'Caesar Salad', price: '$10.99', img: 'assets/food/salad-caesar.png', size: 'medium' },
+                { name: 'Grilled Gulf Shrimp Caesar', price: '$14.99', img: 'assets/food/salad-shrimp-caesar.png', size: 'large' },
+                { name: 'Grilled Chicken Caesar', price: '$12.99', img: 'assets/food/salad-chicken-caesar.png', size: 'large' },
+                { name: 'Virginia Ham Salad', price: '$12.99', img: 'assets/food/salad-ham.png', size: 'medium' },
+                { name: 'Steak Salad', price: '$14.99', img: 'assets/food/salad-steak.png', size: 'large' },
+                { name: 'Salmon Salad', price: '$14.99', img: 'assets/food/salad-salmon.png', size: 'large' },
+                { name: 'Greek Gyro Salad', price: '$12.99', img: 'assets/food/salad-gyro.png', size: 'large' },
+                { name: 'House Salad', price: '$9.99', img: 'assets/food/salad-house.png', size: 'medium' },
+                { name: 'Big House Salad', price: '$11.99', img: 'assets/food/salad-big-house.png', size: 'large' },
+                { name: 'Buffalo Blue Chicken Salad', price: '$13.99', img: 'assets/food/salad-buffalo.png', size: 'large' }
             ],
             sandwiches: [
-                { name: 'Crazy Pulled Pork', img: 'assets/food/pulled-pork.png', size: 'large' },
-                { name: "Johnny's CheeseSteak", img: 'assets/food/cheesesteak.png', size: 'large' },
-                { name: 'Chicken Philly Steak', img: 'assets/food/chicken-philly.png', size: 'large' },
-                { name: 'Reuben', img: 'assets/food/reuben.png', size: 'large' },
-                { name: 'Grilled Hot Sausage', img: 'assets/food/sausage.png', size: 'medium' },
-                { name: 'Meatball Volcano', img: 'assets/food/meatball.png', size: 'large' },
-                { name: 'Italian Hoagie', img: 'assets/food/hoagie.png', size: 'large' },
-                { name: 'Shrimp PoBoy', img: 'assets/food/poboy.png', size: 'large' },
-                { name: 'Grilled Salmon Sandwich', img: 'assets/food/salmon-sandwich.png', size: 'medium' },
-                { name: 'Crab Cake Sandwich', img: 'assets/food/crab-cake.png', size: 'medium' },
-                { name: 'Grilled Chicken Sandwich', img: 'assets/food/chicken-sandwich.png', size: 'medium' },
-                { name: 'Buffalo Hot Chicken', img: 'assets/food/buffalo-chicken.png', size: 'large' },
-                { name: 'Tuscan Chicken', img: 'assets/food/tuscan-chicken.png', size: 'medium' },
-                { name: 'Monterey Jack Chicken', img: 'assets/food/monterey-chicken.png', size: 'medium' },
-                { name: 'Fried Grouper Sandwich', img: 'assets/food/grouper.png', size: 'medium' },
-                { name: 'Fried Fish Sandwich', img: 'assets/food/fish-sandwich.png', size: 'medium' },
-                { name: 'Roast Beef Dip', img: 'assets/food/roast-beef.png', size: 'large' },
-                { name: 'Panini', img: 'assets/food/panini.png', size: 'medium' },
-                { name: 'Mile High Ham', img: 'assets/food/ham-sandwich.png', size: 'large' }
+                { name: 'Crazy Pulled Pork', price: '$11.99', img: 'assets/food/sandwich-pork.png', size: 'large' },
+                { name: 'Johnny\'s CheeseSteak', price: '$12.99', img: 'assets/food/sandwich-cheesesteak.png', size: 'large' },
+                { name: 'Chicken Philly Steak', price: '$12.99', img: 'assets/food/sandwich-philly.png', size: 'large' },
+                { name: 'Reuben', price: '$11.99', img: 'assets/food/sandwich-reuben.png', size: 'large' },
+                { name: 'Grilled Hot Sausage', price: '$10.99', img: 'assets/food/sandwich-sausage.png', size: 'medium' },
+                { name: 'Meatball Volcano', price: '$11.99', img: 'assets/food/sandwich-meatball.png', size: 'large' },
+                { name: 'Italian Hoagie', price: '$11.99', img: 'assets/food/sandwich-hoagie.png', size: 'large' },
+                { name: 'Shrimp PoBoy', price: '$13.99', img: 'assets/food/sandwich-poboy.png', size: 'large' },
+                { name: 'Grilled Salmon Sandwich', price: '$13.99', img: 'assets/food/sandwich-salmon.png', size: 'large' },
+                { name: 'Crab Cake Sandwich', price: '$14.99', img: 'assets/food/sandwich-crab.png', size: 'large' },
+                { name: 'Grilled Chicken Sandwich', price: '$10.99', img: 'assets/food/sandwich-chicken.png', size: 'medium' },
+                { name: 'Buffalo Hot Chicken', price: '$11.99', img: 'assets/food/sandwich-buffalo.png', size: 'large' },
+                { name: 'Tuscan Chicken', price: '$12.99', img: 'assets/food/sandwich-tuscan.png', size: 'large' },
+                { name: 'Monterey Jack Chicken', price: '$12.99', img: 'assets/food/sandwich-monterey.png', size: 'large' },
+                { name: 'Fried Grouper Sandwich', price: '$13.99', img: 'assets/food/sandwich-grouper.png', size: 'large' },
+                { name: 'Fried Fish Sandwich', price: '$11.99', img: 'assets/food/sandwich-fish.png', size: 'medium' },
+                { name: 'Roast Beef Dip', price: '$11.99', img: 'assets/food/sandwich-roast-beef.png', size: 'large' },
+                { name: 'Panini', price: '$10.99', img: 'assets/food/sandwich-panini.png', size: 'medium' },
+                { name: 'Mile High Ham', price: '$11.99', img: 'assets/food/sandwich-ham.png', size: 'large' }
             ],
             dinners: [
-                { name: 'Meatloaf', img: 'assets/food/meatloaf.png', size: 'medium' },
-                { name: 'Chargrilled Chicken', img: 'assets/food/grilled-chicken.png', size: 'medium' },
-                { name: 'Buffalo Blue Chicken', img: 'assets/food/buffalo-chicken-dinner.png', size: 'medium' },
-                { name: 'Smokey Mountain Chicken', img: 'assets/food/smokey-chicken.png', size: 'medium' },
-                { name: 'Honey Glazed Chicken', img: 'assets/food/honey-chicken.png', size: 'medium' },
-                { name: 'Grande Ravioli', img: 'assets/food/ravioli.png', size: 'medium' },
-                { name: 'Fried Shrimp Dinner', img: 'assets/food/fried-shrimp.png', size: 'medium' },
-                { name: 'Chicken Parmigiana', img: 'assets/food/chicken-parm.png', size: 'medium' },
-                { name: 'Blackened Tilapia', img: 'assets/food/tilapia.png', size: 'medium' },
-                { name: 'Grilled Salmon', img: 'assets/food/grilled-salmon.png', size: 'medium' },
-                { name: 'Pot Roast', img: 'assets/food/pot-roast.png', size: 'medium' },
-                { name: 'Eggplant Parmigiana', img: 'assets/food/eggplant-parm.png', size: 'medium' },
-                { name: 'Portobello Grille', img: 'assets/food/portobello.png', size: 'small' }
+                { name: 'Meatloaf', price: '$14.99', img: 'assets/food/dinner-meatloaf.png', size: 'large' },
+                { name: 'Chargrilled Chicken', price: '$15.99', img: 'assets/food/dinner-chicken.png', size: 'large' },
+                { name: 'Buffalo Blue Chicken', price: '$15.99', img: 'assets/food/dinner-buffalo.png', size: 'large' },
+                { name: 'Smokey Mountain Chicken', price: '$15.99', img: 'assets/food/dinner-smokey.png', size: 'large' },
+                { name: 'Honey Glazed Chicken', price: '$15.99', img: 'assets/food/dinner-honey.png', size: 'large' },
+                { name: 'Grande Ravioli', price: '$14.99', img: 'assets/food/dinner-ravioli.png', size: 'large' },
+                { name: 'Fried Shrimp Dinner', price: '$16.99', img: 'assets/food/dinner-shrimp.png', size: 'large' },
+                { name: 'Chicken Parmigiana', price: '$15.99', img: 'assets/food/dinner-parm.png', size: 'large' },
+                { name: 'Blackened Tilapia', price: '$16.99', img: 'assets/food/dinner-tilapia.png', size: 'large' },
+                { name: 'Grilled Salmon', price: '$17.99', img: 'assets/food/dinner-salmon.png', size: 'large' },
+                { name: 'Pot Roast', price: '$14.99', img: 'assets/food/dinner-pot-roast.png', size: 'large' },
+                { name: 'Eggplant Parmigiana', price: '$14.99', img: 'assets/food/dinner-eggplant.png', size: 'large' },
+                { name: 'Portobello Grille', price: '$15.99', img: 'assets/food/dinner-portobello.png', size: 'large' }
             ],
             pasta: [
-                { name: 'Angel Hair', img: 'assets/food/angel-hair.png', size: 'medium' },
-                { name: 'Chicken Topped Pasta', img: 'assets/food/chicken-pasta.png', size: 'medium' },
-                { name: 'Grilled Shrimp Topped Pasta', img: 'assets/food/shrimp-pasta.png', size: 'medium' }
+                { name: 'Angel Hair', price: '$12.99', img: 'assets/food/pasta-angel.png', size: 'medium' },
+                { name: 'Chicken Topped Pasta', price: '$14.99', img: 'assets/food/pasta-chicken.png', size: 'large' },
+                { name: 'Grilled Shrimp Topped Pasta', price: '$15.99', img: 'assets/food/pasta-shrimp.png', size: 'large' }
             ],
-            children: [
-                { name: 'Chicken Fingers & Fries', img: 'assets/food/chicken-fingers.png', size: 'medium' },
-                { name: 'Angel Hair Pasta (Butter or Marinara)', img: 'assets/food/kids-pasta.png', size: 'small' },
-                { name: 'Cheeseburger & Fries', img: 'assets/food/kids-burger.png', size: 'medium' },
-                { name: 'Grilled Cheese & Fries', img: 'assets/food/grilled-cheese.png', size: 'small' }
+            childrens: [
+                { name: 'Chicken Fingers & Fries', price: '$8.99', img: 'assets/food/kids-chicken.png', size: 'medium' },
+                { name: 'Angel Hair Pasta (Butter or Marinara)', price: '$7.99', img: 'assets/food/kids-pasta.png', size: 'small' },
+                { name: 'Cheeseburger & Fries', price: '$8.99', img: 'assets/food/kids-burger.png', size: 'medium' },
+                { name: 'Grilled Cheese & Fries', price: '$7.99', img: 'assets/food/kids-grilled-cheese.png', size: 'small' }
             ],
-            potato: [
-                { name: 'Sweet Potato Fries', img: 'assets/food/sweet-fries.png', size: 'medium' },
-                { name: 'Fresh Cut French Fries', img: 'assets/food/fries.png', size: 'medium' },
-                { name: 'Large Plate of Fries', img: 'assets/food/large-fries.png', size: 'large' },
-                { name: 'Fully Loaded Fries', img: 'assets/food/loaded-fries.png', size: 'large' },
-                { name: 'Ultimate Fries', img: 'assets/food/ultimate-fries.png', size: 'large' },
-                { name: 'Cheese Fries (Large)', img: 'assets/food/cheese-fries.png', size: 'large' },
-                { name: 'Rancho Fries', img: 'assets/food/rancho-fries.png', size: 'large' },
-                { name: 'Gyro Fries', img: 'assets/food/gyro-fries.png', size: 'large' },
-                { name: 'Cheese Steak Fries', img: 'assets/food/cheesesteak-fries.png', size: 'large' }
+            potatoes: [
+                { name: 'Sweet Potato Fries', price: '$5.99', img: 'assets/food/fries-sweet.png', size: 'small' },
+                { name: 'Fresh Cut French Fries', price: '$4.99', img: 'assets/food/fries-french.png', size: 'small' },
+                { name: 'Large Plate of Fries', price: '$6.99', img: 'assets/food/fries-large.png', size: 'medium' },
+                { name: 'Fully Loaded Fries', price: '$9.99', img: 'assets/food/fries-loaded.png', size: 'large' },
+                { name: 'Ultimate Fries', price: '$10.99', img: 'assets/food/fries-ultimate.png', size: 'large' },
+                { name: 'Cheese Fries (Large)', price: '$7.99', img: 'assets/food/fries-cheese.png', size: 'medium' },
+                { name: 'Rancho Fries', price: '$8.99', img: 'assets/food/fries-rancho.png', size: 'medium' },
+                { name: 'Gyro Fries', price: '$9.99', img: 'assets/food/fries-gyro.png', size: 'medium' },
+                { name: 'Cheese Steak Fries', price: '$9.99', img: 'assets/food/fries-cheesesteak.png', size: 'medium' }
             ],
             wings: [
-                { name: 'Order of 8 - Seasoned', img: 'assets/food/wings.png', size: 'medium' },
-                { name: 'Order of 8 - Bang-Bang', img: 'assets/food/wings-bang-bang.png', size: 'medium' },
-                { name: 'Order of 8 - Garlic Parmesan', img: 'assets/food/wings-garlic.png', size: 'medium' },
-                { name: 'Order of 8 - Honey Mustard', img: 'assets/food/wings-honey.png', size: 'medium' },
-                { name: 'Order of 8 - Ranch', img: 'assets/food/wings-ranch.png', size: 'medium' },
-                { name: 'Order of 8 - Old Bay', img: 'assets/food/wings-oldbay.png', size: 'medium' },
-                { name: 'Order of 8 - Mild', img: 'assets/food/wings-mild.png', size: 'medium' },
-                { name: 'Order of 8 - Hot Buffalo', img: 'assets/food/wings-buffalo.png', size: 'medium' },
-                { name: 'Order of 8 - Jamaican Jerk', img: 'assets/food/wings-jerk.png', size: 'medium' },
-                { name: 'Order of 8 - BBQ', img: 'assets/food/wings-bbq.png', size: 'medium' },
-                { name: 'Order of 8 - Ranchero', img: 'assets/food/wings-ranchero.png', size: 'medium' },
-                { name: 'Order of 8 - Dry Cajun', img: 'assets/food/wings-cajun.png', size: 'medium' },
-                { name: 'Order of 24 - Seasoned', img: 'assets/food/wings-24.png', size: 'large' },
-                { name: 'Order of 24 - Bang-Bang', img: 'assets/food/wings-24-bang.png', size: 'large' },
-                { name: 'Order of 24 - Garlic Parmesan', img: 'assets/food/wings-24-garlic.png', size: 'large' },
-                { name: 'Order of 24 - Honey Mustard', img: 'assets/food/wings-24-honey.png', size: 'large' },
-                { name: 'Order of 24 - Ranch', img: 'assets/food/wings-24-ranch.png', size: 'large' },
-                { name: 'Order of 24 - Old Bay', img: 'assets/food/wings-24-oldbay.png', size: 'large' },
-                { name: 'Order of 24 - Mild', img: 'assets/food/wings-24-mild.png', size: 'large' },
-                { name: 'Order of 24 - Hot Buffalo', img: 'assets/food/wings-24-buffalo.png', size: 'large' },
-                { name: 'Order of 24 - Jamaican Jerk', img: 'assets/food/wings-24-jerk.png', size: 'large' },
-                { name: 'Order of 24 - BBQ', img: 'assets/food/wings-24-bbq.png', size: 'large' },
-                { name: 'Order of 24 - Ranchero', img: 'assets/food/wings-24-ranchero.png', size: 'large' },
-                { name: 'Order of 24 - Dry Cajun', img: 'assets/food/wings-24-cajun.png', size: 'large' },
-                { name: 'Order of Boneless Wings - Seasoned', img: 'assets/food/boneless-wings.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Bang-Bang', img: 'assets/food/boneless-bang.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Garlic Parmesan', img: 'assets/food/boneless-garlic.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Honey Mustard', img: 'assets/food/boneless-honey.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Ranch', img: 'assets/food/boneless-ranch.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Old Bay', img: 'assets/food/boneless-oldbay.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Mild', img: 'assets/food/boneless-mild.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Hot Buffalo', img: 'assets/food/boneless-buffalo.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Jamaican Jerk', img: 'assets/food/boneless-jerk.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - BBQ', img: 'assets/food/boneless-bbq.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Ranchero', img: 'assets/food/boneless-ranchero.png', size: 'medium' },
-                { name: 'Order of Boneless Wings - Dry Cajun', img: 'assets/food/boneless-cajun.png', size: 'medium' }
+                { name: 'Order of 8 Wings', price: '$7.99', img: 'assets/food/wings-8.png', size: 'small' },
+                { name: 'Order of 24 Wings', price: '$19.99', img: 'assets/food/wings-24.png', size: 'large' },
+                { name: 'Order of Boneless Wings', price: '$8.99', img: 'assets/food/wings-boneless.png', size: 'medium' }
             ]
         };
 
-        // ✅ RENDER MENU WITH IMAGE FALLBACK
-        function renderMenu(category) {
-            const menuGrid = document.getElementById('menuGrid');
+        // Initialize menu
+        function initializeMenu() {
+            const categoryTabs = document.getElementById('category-tabs');
+            const categories = Object.keys(menuData);
+
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn' + (category === 'appetizers' ? ' active' : '');
+                btn.textContent = category.charAt(0).toUpperCase() + category.slice(1).replace(/([A-Z])/g, ' $1');
+                btn.onclick = () => filterMenu(category, btn);
+                categoryTabs.appendChild(btn);
+            });
+
+            filterMenu('appetizers');
+        }
+
+        // Filter menu by category
+        function filterMenu(category, btn) {
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const menuGrid = document.getElementById('menu-grid');
             menuGrid.innerHTML = '';
 
-            const items = menuData[category] || [];
-            items.forEach((item, index) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'menu-item-card';
-                itemDiv.style.animationDelay = `${index * 0.05}s`;
-
-                let imageHTML = '';
-                // Only render image if path exists and is not empty
-                if (item.img && item.img.trim()) {
-                    imageHTML = `<img src="${item.img}" alt="${item.name}" class="menu-item-img img-${item.size}" onerror="this.style.display='none'">`;
-                }
-
-                itemDiv.innerHTML = `
+            menuData[category].forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-item-card';
+                card.innerHTML = `
                     <h3>${item.name}</h3>
-                    <p>Delicious ${category} item prepared fresh daily with premium ingredients.</p>
-                    ${imageHTML}
+                    <p>Premium quality item prepared fresh daily</p>
+                    <div class="menu-item-price">${item.price}</div>
+                    ${item.img ? `<img src="${item.img}" alt="${item.name}" class="menu-item-img img-${item.size}" onerror="this.style.display='none'">` : ''}
                 `;
-
-                menuGrid.appendChild(itemDiv);
+                menuGrid.appendChild(card);
             });
         }
 
-        // ✅ FILTER MENU
-        function filterMenu(e) {
-            const category = e.target.dataset.category || e.target.textContent.toLowerCase().split(' ')[1];
-            
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            e.target.classList.add('active');
-
-            // Render menu
-            renderMenu(category);
-        }
-
-        // Attach click handlers to category buttons
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', filterMenu);
-        });
-
-        // Initialize with appetizers
-        renderMenu('appetizers');
-
-        // ✅ SLIDER CONTROLS
+        // Slider functionality
         function scrollSlider(direction) {
-            const slider = document.getElementById('specialsSlider');
-            const scrollAmount = 360; // card width + gap
+            const slider = document.getElementById('specials-slider');
+            const scrollAmount = 360;
             slider.scrollBy({
-                left: direction * scrollAmount,
+                left: direction === 'next' ? scrollAmount : -scrollAmount,
                 behavior: 'smooth'
             });
         }
 
-        // ✅ CENTER TODAY'S SPECIAL
-        function centerTodaySpecial() {
-            const slider = document.getElementById('specialsSlider');
-            const cards = document.querySelectorAll('.special-card');
-            const today = new Date().getDay();
+        // Auto-detect center card and update active state
+        function updateActiveCard() {
+            const slider = document.getElementById('specials-slider');
+            const cards = slider.querySelectorAll('.special-card');
+            const sliderCenter = slider.offsetWidth / 2 + slider.scrollLeft;
 
             cards.forEach(card => {
-                card.classList.remove('active');
-                if (parseInt(card.dataset.day) === today) {
-                    card.classList.add('active');
-                    const offset = card.offsetLeft - (slider.offsetWidth / 2) + (card.offsetWidth / 2);
-                    slider.scrollTo({
-                        left: offset,
-                        behavior: 'smooth'
-                    });
-                }
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                const distance = Math.abs(sliderCenter - cardCenter);
+                card.classList.toggle('active', distance < 100);
             });
         }
 
-        // Run on page load
-        window.addEventListener('load', centerTodaySpecial);
+        // Scroll to today's special on load
+        function scrollToToday() {
+            const slider = document.getElementById('specials-slider');
+            const today = new Date().getDay();
+            const cards = slider.querySelectorAll('.special-card');
+            if (cards[today]) {
+                cards[today].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+
+        // Event listeners
+        document.getElementById('specials-slider')?.addEventListener('scroll', updateActiveCard);
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            initializeMenu();
+            scrollToToday();
+            updateActiveCard();
+        });
     </script>
 </body>
 </html>
