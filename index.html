@@ -197,23 +197,30 @@ Index Ba'runi 010
             margin-bottom: 2rem;
         }
 
-        .slider-controls button {
-            background: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            type: button;
-        }
+        .slider-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
 
-        .slider-controls button:hover {
-            background: #b71c1c;
-            transform: scale(1.05);
-        }
+/* Hover effect */
+.slider-btn:hover {
+    background: var(--accent-red);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(211,47,47,0.6);
+}
+
+/* Optional: slight press effect */
+.slider-btn:active {
+    transform: scale(0.95);
+}
 
         /* ✅ HORIZONTAL SLIDER */
         .specials-slider {
