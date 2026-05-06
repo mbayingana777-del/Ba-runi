@@ -189,29 +189,36 @@
 
         /* ✅ SLIDER CONTROLS */
         .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
 
-        .slider-controls button {
-            background: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            type: button;
-        }
+        .slider-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
 
-        .slider-controls button:hover {
-            background: #b71c1c;
-            transform: scale(1.05);
-        }
+/* Hover effect */
+.slider-btn:hover {
+    background: var(--accent-red);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(211,47,47,0.6);
+}
+
+/* Optional: slight press effect */
+.slider-btn:active {
+    transform: scale(0.95);
+}
 
         /* ✅ HORIZONTAL SLIDER */
         .specials-slider {
@@ -578,8 +585,8 @@
         </div>
 
         <div class="slider-controls">
-            <button type="button" onclick="scrollSlider(-1)">← Previous</button>
-            <button type="button" onclick="scrollSlider(1)">Next →</button>
+            <button type="button" class="slider-btn left" onclick="scrollSlider(-1)">←</button>
+            <button type="button" class="slider-btn right" onclick="scrollSlider(1)">→</button>
         </div>
 
         <div class="specials-slider" id="specialsSlider">
@@ -901,3 +908,4 @@
     </script>
 </body>
 </html>
+
